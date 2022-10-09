@@ -19,5 +19,4 @@ I will try to use a different mail service (protonmail) in the future.
 
 
 The map was created using [openlayers](https://openlayers.org).
-The contact form uses [PHPMAILER](https://github.com/PHPMailer) to send emails.
  

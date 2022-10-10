@@ -17,7 +17,18 @@
         height: auto;
     }
   }
-
+@media only screen and (max-width: 1000px) {
+    @keyframes grow {
+        from {
+            width: 1%;
+            height: auto;
+        }
+        to {
+            width: 15%;
+            height: auto;
+        }
+      }
+}
   :root{
     --opaque65: rgba(245, 245, 245, 0.65);
     --opaque20: rgba(245, 245, 245, 0.20);
@@ -34,6 +45,11 @@
     font-family: 'Arima Madurai', cursive;
     font-size: 16px;
 }
+@media only screen and (max-width: 692px){
+    *{
+        font-size: 98%;
+    }
+}
 body {
     background-color: var(--dark-red)
 }
@@ -42,16 +58,25 @@ section {
     border-bottom: var(--border-2px)
 }
 h1 {
-    font-size: 8vw;/*7rem;*/
-    white-space: nowrap;
-
+    font-size: 8vw;
+    text-align: center;
+}
+@media only screen and (max-width: 692px){
+    h1{
+        font-size: 7vh;
+    }
+}
+@media only screen and (max-width: 430px){
+    h1{
+        font-size: 5.5vh;
+    }
 }
 h2 {
     font-size: 3rem;
     font-weight: bold;
 }
 h3 {
-    font-size: 2vw;
+    font-size: 2vh;
     white-space: nowrap;
 }
 h4{
@@ -74,7 +99,11 @@ i {
     height: 95vh;
     width: auto;
 }
-
+@media only screen and (max-width: 1000px) {
+    .hero {
+        height: 85vh;
+    }
+}
 header .image-container{
     background-image: url("../pictures/hero-cupcake-med.jpg");
     background-repeat: no-repeat;
@@ -83,6 +112,11 @@ header .image-container{
     background-size: cover;
     min-height: 100%;
     min-width: auto;
+}
+@media only screen and (max-width: 692px){
+    header .image-container{
+        background-image: url("../pictures/hero-cupcake-sml-short.jpg");
+    }
 }
 .text-wrapper{
     display: flex;
@@ -106,6 +140,7 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 nav li a{
     display: inline;
@@ -132,7 +167,12 @@ nav li:hover{
     background-color: transparent;
     cursor: pointer;
     animation: grow 1s ease-in-out;
-    
+}
+@media only screen and (max-width: 1000px) {
+   .back-to-top {
+    width: 15%;
+    left: -1.95%;
+   }
 }
 .back-to-top img{
     animation: gentle-shake 4s ease-in-out infinite;
@@ -140,6 +180,75 @@ nav li:hover{
 /*HIDDEN NAV*/
 .hidden-nav{
     display: none;
+}
+@media only screen and (max-width: 640px){
+    nav{
+        display: none;
+    }
+    /*HIDDEN NAV BAR - HAMBURGER MENU*/
+    .hidden-nav{
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        height: 100px;
+    }
+    .hidden-nav .menu {
+        position: relative;
+        width: 90%;
+    }
+    .hidden-nav button{
+        width: 100%;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: var(--dark-red);
+        color: var(--light-red);
+        border: var(--border-2px);
+        outline: none;
+        border-radius: 15px;
+    }
+    .hidden-nav .menu ul{
+        position: absolute;
+        top: 53%;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        list-style: none;
+        border: var(--border-2px);
+        border-radius: 15px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.4s ease
+    }
+    .hidden-nav .menu li{
+        background:var(--dark-red);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3%;
+    }
+
+    .hidden-nav .menu a{
+        font-size: 1.5rem;
+        color: var(--opaque65);
+        text-decoration: none;
+    }
+
+    .hidden-nav .menu button:focus + ul{
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(10px);
+    }
+
+    .hidden-nav .menu ul li:focus{
+        background: var(--light-red);
+    }
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
@@ -171,6 +280,9 @@ main {
     gap: 10px;
     padding-bottom: 10%;
     padding-top: 3%;
+}
+.specials h2 {
+    text-align: center;
 }
 .specials li {
     font-size: 1.5rem;
@@ -227,9 +339,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
     width: 90%; /*of the white box*/
     padding-top: 5%;
     padding-bottom: 10%;
+}
+.left-side {
+    text-align: center;
 }
 .menu-text p{
     font-size: 1.25rem;
@@ -258,12 +374,26 @@ main {
 }
 .menu-grid { /*for menu*/
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
     padding: 2rem;
     background-color: var(--opaque20);
     border: var(--border-2px);
     border-radius: 30px;
 }
+@media only screen and (max-width: 882px) {
+    .right-side {
+        margin: 5%;
+        align-items: center;
+    }
+    .menu-grid {
+        justify-content: center;
+        text-align: center;
+        width: 90%;
+    }
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
 /* CLASSES */
 .classes {
     display: flex;
@@ -281,10 +411,14 @@ main {
     justify-content: center;
     align-items: center;
 }
+.class-header h2 {
+    text-align: center;
+}
 .class-examples{
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: stretch;
+    flex-wrap: wrap;
     width: 100%;
 }
 .class-examples .image-container {
@@ -308,21 +442,30 @@ main {
 .class-summary p{
     font-size: 1.25rem;
     line-height: 200%;
-    
 }
+@media only screen and (max-width: 1000px) {
+    .class-summary {
+        width: 90%;
+    }
+    .class-summary p {
+        font-size: 90%;
+    }
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 /* ABOUT */
 .about { /*Whole section*/
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
     column-gap: 3rem;
     width: 90%;
     padding-top: 5%;
     padding-bottom: 5%;
 }
 .about .image-container{/*left side*/
-    width: 30%;
+    width: 20rem;
 }
 .about img {
     border: var(--border-2px);
@@ -332,18 +475,34 @@ main {
     display: flex;
     flex-direction: column;
     justify-self: center;
-    width: 45%;
+    width: 50%;
 }
 .about p{
     font-size: 1.25rem;
     line-height: 200%;
     
 }
+@media only screen and (max-width: 1240px){
+    .about-header {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .about-header {
+        width: 90%;
+    }
+    .about p {
+        font-size: 90%;
+    }
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
 /* CONTACT */
 .contact {
     display: flex;
     justify-content: center;
     align-items: start;
+    flex-wrap: wrap;
     column-gap: 3rem;
     width: 100%;
     padding-top: 5%;
@@ -352,7 +511,7 @@ main {
 .contact-header {
     display: flex;
     flex-direction: column;
-    width: 30%; 
+    width: 30rem; 
 }
 .contact-header h2 {
     padding-left: 3%;
@@ -379,12 +538,13 @@ main {
     border-radius: 30px;
     overflow: hidden;
     height: 400px;
-    width: 100%;
+    margin: 5%;
 }
 .contact-form{
     align-self: end;
     font-weight: bold;
-    width: 35%;
+    width: 30rem;
+    margin: 5%;
 }
 label{
     padding-left: 10px;
@@ -409,6 +569,12 @@ textarea:focus{
     box-shadow: none;
     outline: none
 }
+@media only screen and (max-width: 1120px) {
+    #submit {
+        margin-left: 5%;
+    }
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 /* FOOTER */
 .created-by{
@@ -422,534 +588,4 @@ textarea:focus{
 /* FOOTER - just for aesthetics */
 footer{
     height: 3rem;
-}
-/* ***************BREAKPOINTS****************************
-/* laptop */
-@media only screen and (max-width: 1510px){
-    *{
-        font-size: 15px;
-    }
-    .all-special-cards{
-        max-width: 500px;
-        max-height: 175px;
-    }
-    .special-text h4{
-        line-height: 110%;
-    }
-}
-/*breakpoint*/
-@media only screen and (max-width: 1350px){
-    *{
-        font-size: 14px;
-    }
-    .special-text h4 {
-        padding-bottom: 2%;
-        margin-bottom: 2%;
-    }
-   .public,
-   .private,
-   .corporate,
-   .one-on-one {
-    flex: 20%;
-   }
-   .left-side {
-    padding-right: 5%;
-   }
-   .header-text p { /*contacts*/
-    font-weight: bold;
-   } 
-   .map{
-    height: 375px;
-   }
-}
-/*breakpoint*/
-@media only screen and (max-width: 1260px){
-    *{
-        font-size: 14px;
-    }
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 6%;
-            height: auto;
-        }
-      }
-    .back-to-top {
-        left: 2.25%;
-        width: 6%;
-    }
-    .all-special-cards{
-        max-width: 475px;
-        max-height: 175px;
-    }
-    .menu-text{
-        padding-right: 1%;
-    }
-    .right-side p{ /*menu section*/
-        font-size: 1.10rem;
-    }
-    .about-header p {
-        font-size: 1.1rem;
-    }
-}
-/*breakpoint*/
-@media only screen and (max-width: 1200px){
-    *{
-        font-size: 13px;
-    }
-    .all-special-cards{
-        max-width: 400px;
-        max-height: 175px;
-    }
-    .one-on-one h4 {
-        font-size: 1.1rem;
-    }
-    .contact-header {
-        width: 35%;
-    }
-    .map{
-        height: 325px;
-       }
-}
-/* tablet landscape */
-@media only screen and (max-width: 1024px){
-    *{
-        font-size: 12px;
-    }
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 7%;
-            height: auto;
-        }
-      }
-    .back-to-top {
-        left: 1.75%;
-        width: 7%;
-    }
-    .contact-header {
-        width: 35%;
-    }
-    .map{
-        height: 325px;
-       }
-}
-/*breakpoint*/
-@media only screen and (max-width: 1015px){
-    h3{
-        font-size: 3vw;
-    }
-    .all-special-cards{
-        max-width: 350px;
-        max-height: 175px;
-    }
-    .class-examples {
-        flex-wrap: wrap;
-    }
-    .classes .image-container {
-        min-width: 300px;
-    }
-}
-/*breakpoint*/ /*CHANGE TO VERTICAL LAYOUT HERE*/
-@media only screen and (max-width: 900px){
-    *{
-        font-size: 13px;
-    }
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 8%;
-            height: auto;
-        }
-      }
-    .back-to-top {
-        left: 1.35%;
-        width: 8%;
-    }
-    .all-special-cards{
-        max-width: 500px;
-        max-height: 200px;
-    }
-    /*Menu*/
-    .menu {
-        flex-direction: column;
-    }
-    .left-side{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-right: 0;
-        margin-bottom: 6%;
-    }
-    .left-side p { /* writing below Menu header*/
-        display: flex;
-        justify-content: center;
-    }
-    .menu li{
-        white-space: nowrap;
-        margin: auto 6%;
-    }
-    .right-side {
-        align-items: center;
-    }
-    /*Classes*/
-    .class-summary {
-        width: 85%;
-    }
-    /*About*/
-    .about {
-        flex-direction: column;
-        align-items: center;
-    }
-    .about .image-container{
-        display: flex;
-        width: 50%;
-        max-height: 400px;
-    }
-    .about img{
-        object-fit: cover;
-        object-position: 100% 20%;
-    }
-    .about-header{
-        width: 85%;
-        align-items: center;
-    }
-    .about-header p{
-        font-size: 1.25rem;
-        text-align: center;
-    }
-    /*Contact*/
-    .contact{
-        flex-direction: column;
-        align-items: center;
-    }
-    .contact-header{
-        width: 65%;
-        text-align: center;
-    }
-    .contact-header h2{
-        padding: 0;
-    }
-    .header-text p{
-        display: inline;
-        font-size: 1.25rem;
-        padding: 0;
-    }
-    .contact-social{
-        justify-content: space-around;
-    }
-    .contact-form{
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        width: 65%;
-        font-size: 1.1rem;
-        padding-top: 5%;
-    }
-
-}
-/* tablet */
-@media only screen and (max-width: 768px){
-    *{
-        font-size: 14px;
-    }
-    h1{
-        font-size: 8.5vw;
-    }
-    .hero{
-        height: 75vh;
-    }
-    nav li a{
-        font-size: 1.75rem;
-    }
-    
-}
-/*breakpoint*/
-@media only screen and (max-width: 755px){
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 9%;
-            height: auto;
-        }
-      }
-    .back-to-top {
-        left: 1%;
-        width: 9%;
-    }
-    .classes .image-container {
-        max-width: 200px;
-    }
-    .one-on-one h4{
-        font-size: 1.25rem;
-    }
-}
-/*breakpoint*/
-@media only screen and (max-width: 692px){ /*HEIGHT PROBLEMS HERE AND SMALLER*/
-    h1{
-        font-size: 10vw;
-        white-space: normal;
-        text-align: center;
-    }
-    header .image-container{
-        background-image: url("../pictures/hero-cupcake-sml-short.jpg");
-    }
-    .hero{
-        height: 65vh;
-    }
-    .text-wrapper h3 {
-        font-size: 3vw;
-    }
-    .specials h2 {
-        text-align: center;
-    }
-    .prices li{
-        margin: auto 3%;
-    }
-    .class-header h2{
-        text-align: center;
-    }
-}
-/* phone */
-@media only screen and (max-width: 560px){
-    .hero{
-        height: 50vh;
-    }
-    header .image-container {
-        background-position: bottom;
-    }
-    nav{
-        display: none;
-    }
-    /*HIDDEN NAV BAR - HAMBURGER MENU*/
-    .hidden-nav{
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        width: 100%;
-        height: 100px;
-    }
-    .hidden-nav .menu {
-        position: relative;
-        width: 90%;
-    }
-    .hidden-nav button{
-        font-size: 2rem;
-        font-weight: bold;
-        background-color: var(--dark-red);
-        color: var(--light-red);
-        border: var(--border-2px);
-        outline: none;
-        border-radius: 15px;
-    }
-    .hidden-nav .menu ul{
-        position: absolute;
-        top: 53%;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        list-style: none;
-        border: var(--border-2px);
-        border-radius: 15px;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.4s ease
-    }
-    .hidden-nav .menu li{
-        background:var(--dark-red);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 3%;
-    }
-
-    .hidden-nav .menu a{
-        font-size: 1.5rem;
-        color: var(--opaque65);
-        text-decoration: none;
-    }
-
-    .hidden-nav .menu button:focus + ul{
-        opacity: 1;
-        pointer-events: all;
-        transform: translateY(10px);
-    }
-
-    .hidden-nav .menu ul li:focus{
-        background: var(--light-red);
-    }
-    /* back to top */
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 10%;
-            height: auto;
-        }
-      }
-      .back-to-top {
-        width: 10%;
-        left: .5%;
-      }
-    /* specials */
-    .specials ul{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3%;
-    }
-    .specials ul li{
-        padding-bottom: 3%;
-    }
-    .all-special-cards {
-        flex-direction: column;
-        max-width: 200px;
-        max-height: 375px;
-    }
-    .card-container{
-        margin-top: 0;
-    }
-    .all-special-cards .image-container{
-        height: 40%;
-    }
-    .all-special-cards .special-text{
-        height: 100%;
-        width: 90%;
-        margin-top: 15%;
-    }
-    /* menu */
-    .prices ul{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3%;
-    }
-    .prices ul li{
-        padding-bottom: 3%;
-    }
-    /* menu and classes */
-    .menu p,
-    .classes p,
-    .menu-grid{
-        text-align: center;
-    }
-    /* classes */
-    .class-examples{
-        gap: 1rem;
-    }
-    /* about */
-    .about .image-container {
-        width: 70%;
-    }
-    /* contacts */
-    .contact-header,
-    .contact-form{
-        width: 75%;
-    }
-}
-/* breakpoint*/
-@media only screen and (max-width: 518px){
-    *{
-        font-size: 13px;
-    }
-    h3{
-        font-size: 1.25rem;
-    }
-    /* back to top */
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 13%;
-            height: auto;
-        }
-        }
-        .back-to-top {
-        width: 13%;
-        left: .5%;
-        }
-    /* specials */
-    .all-special-cards{
-        min-width: 250px;
-        min-height: 410px;
-    }
-    .all-special-cards .image-container {
-        height: 50%;
-    }
-    .special-1-image img,
-    .special-2-image img{
-        object-position: 80% 80%;
-    }
-    .special-4-image img{
-        object-position: 50% 40%;
-    }
-    /* menu */
-    .menu-grid{
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    /* about */
-    .about{
-        padding-top: 10%;
-        padding-bottom: 10%;
-    }   
-}
-@media only screen and (max-width: 340px){
-    *{
-        font-size: 12px;
-    }
-    h1{
-        font-size: 10vw;
-    }
-    h3{
-        font-size: 4vw;
-    }
-    .hidden-nav .menu ul{
-        top: 56%
-    }
-    /* back to top */
-    @keyframes grow {
-        from {
-            width: 1%;
-            height: auto;
-        }
-        to {
-            width: 16%;
-            height: auto;
-        }
-        }
-        .back-to-top {
-        width: 16%;
-        left: .5%;
-        }
-    .all-special-cards {
-        min-width: 200px;
-    }
-    .classes .image-container{
-        min-width: 200px;
-    }
-    .classes .image-container h4 {
-        font-size: 1.1rem;
-    }
-    
 }
